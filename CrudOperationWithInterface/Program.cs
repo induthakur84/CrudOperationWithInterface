@@ -1,4 +1,6 @@
 using CrudOperationWithInterface;
+using CrudOperationWithInterface.Services;
+using CrudOperationWithInterface.Services.IServices;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +9,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DbCon")));
+
+
+builder.Services.AddScoped<IProductService, ProductService>();
+
+
+//builder.Services.AddSingleton<IProductService, ProductService>();
+//builder.Services.AddTransient<IProductService, ProductService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

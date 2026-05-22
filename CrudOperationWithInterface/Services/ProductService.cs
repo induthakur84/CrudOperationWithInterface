@@ -42,6 +42,11 @@ namespace CrudOperationWithInterface.Services
             }
         }
 
+        /// <summary>
+        ///  here we can write the query to get all the products from the database. We are using AsNoTracking() method to improve the performance of the query by not tracking the changes of the entities. This is useful when we only want to read the data and not update it.
+        /// </summary>
+        /// <returns></returns>
+
         public IEnumerable<Product> GetAll()
         {
            return _context.Products.AsNoTracking().ToList();
@@ -72,3 +77,9 @@ namespace CrudOperationWithInterface.Services
         }
     }
 }
+
+
+
+
+
+//Interface Segregation Principle (ISP) - Clients should not be forced to depend on interfaces they do not use.
